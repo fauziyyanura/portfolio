@@ -3,7 +3,16 @@ const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
 menuToggle.addEventListener('click', () => {
-  mobileMenu.classList.toggle('hidden');
+  mobileMenu.classList.toggle('open');
+});
+
+// ===== Close Mobile Menu on Link Click =====
+const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+
+mobileNavLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+  });
 });
 
 // ===== Active Navigation Link on Scroll =====
@@ -28,13 +37,26 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== Contact Form Handling =====
-const contactForm = document.getElementById('contact-form');
+// Wait until DOM is ready
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("contact-form");
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  alert('Thank you for your message! I will get back to you soon.');
-  contactForm.reset();
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_aliivxs", "template_8lfq6kg", this)
+      .then(function() {
+        alert("Thank you for your message! I will get back to you soon.");
+        form.reset(); // optional: clears the form after submission
+      }, function(error) {
+        console.error("FAILED...", error);
+        alert("Oops! Something went wrong. Please try again.");
+      });
+  });
 });
+
+
+
 
 // ===== Scroll Reveal Animation =====
 function revealOnScroll() {
