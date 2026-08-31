@@ -525,6 +525,24 @@ textarea:focus {
   transition: 0.3s;
 } 
 
+#contact-status {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#contact-status.success {
+  color: #155724;
+  background-color: #d4edda;
+}
+
+#contact-status.error {
+  color: #721c24;
+  background-color: #f8d7da;
+}
+
+
 button:hover {
   opacity: 0.9;
   box-shadow: 0 6px 10px rgba(0,0,0,0.15);

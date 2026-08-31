@@ -38,7 +38,7 @@ window.addEventListener('scroll', () => {
 
 // ===== Contact Form Handling =====
 // Wait until DOM is ready
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("contact-form");
 
   form.addEventListener("submit", function(e) {
@@ -54,6 +54,51 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
 });
+
+// ===== Contact Form Handling =====
+// Wait until DOM is ready
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("contact-form");
+  const statusMessage = document.getElementById("contact-status"); // new element
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_aliivxs", "template_8lfq6kg", this)
+      .then(function() {
+        statusMessage.innerText = "Thank you for your message! I will get back to you soon.";
+        statusMessage.style.color = "green"; // optional styling
+        form.reset(); // clears the form after submission
+      }, function(error) {
+        console.error("FAILED...", error);
+        statusMessage.innerText = "Oops! Something went wrong. Please try again.";
+        statusMessage.style.color = "red";
+      });
+  });
+});*/
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("contact-form");
+  const statusMessage = document.getElementById("contact-status");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_aliivxs", "template_8lfq6kg", this)
+      .then(function() {
+        statusMessage.className = "success";
+        statusMessage.innerText = "Thank you for your message! I will get back to you soon.";
+        form.reset();
+      }, function(error) {
+        console.error("FAILED...", error);
+        statusMessage.className = "error";
+        statusMessage.innerText = "Oops! Something went wrong. Please try again.";
+      });
+  });
+});
+
+
 
 
 
