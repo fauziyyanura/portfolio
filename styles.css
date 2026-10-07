@@ -346,6 +346,11 @@
 }
 
 /* Preview Backgrounds */
+.project-image.schooby-preview {
+  background-image: url('assets/schooby.png');
+  background-size:  cover;
+  background-position:  center;
+}
 .project-image.flower-preview {
   background-image: url('https://flower-delivery-app-frontend-9foi.onrender.com/static/media/flower-dried.e25e0e62c182931e17d8.png');
   background-size: cover;
