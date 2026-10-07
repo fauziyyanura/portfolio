@@ -129,11 +129,40 @@
   position: relative;
 }
 
+/* Layout Wrapper */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
 .hero .container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
+
+/* Intro Text Constraints */
+.intro {
+  width: 100%;
+}
+
+/* Image framing inside circle wrapper 
+.user-icon-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}*/
 
 /* About Section */
 .about-section {
@@ -407,6 +436,22 @@
 @media (min-width: 768px) {
   .contact-grid {
     grid-template-columns: 2fr 3fr;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two balanced side-by-side columns */
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .float-container {
+    justify-content: flex-end; /* Aligns photo neatly to the right column */
+  }
+
+  .float-wrapper {
+    width: 20rem;
+    height: 20rem; /* Enlarges photo slightly for desktop displays */
   }
 }
 
@@ -817,11 +862,18 @@ button:hover {
   max-width: 32rem;
 }
 
-/* Buttons */
+/* Buttons 
 .cta-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}*/
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.75rem; /* Creates breathing room above social icons */
 }
 
 .btn-primary {
@@ -857,7 +909,7 @@ button:hover {
   background-color: rgba(139, 92, 246, 0.05);
 }
 
-/* Social Icons */
+/* Social Icons 
 .social-icons a {
   color: #4b5563;
   font-size: 1.5rem;
@@ -867,6 +919,32 @@ button:hover {
 
 .social-icons a:hover {
   color: #8b5cf6;
+}*/
+
+
+/* Social Icons Container */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* Controls spacing between individual icons */
+  margin-top: 0.5rem;
+}
+
+/* Individual Icon Styles */
+.social-icons a {
+  color: #4b5563;
+  font-size: 1.5rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.3s ease;
+  margin-right: 0; /* Replaced with gap on parent container */
+}
+
+.social-icons a:hover {
+  color: #8b5cf6;
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
 /* Hero Image */
@@ -945,12 +1023,6 @@ button:hover {
   animation-delay: 2s;
 }
 
-@media (min-width: 768px) {
-  .about-content {
-    flex-direction: row;
-  }
-}
-
 .about-img {
   flex: 1;
   height: 20rem;
@@ -1019,11 +1091,6 @@ button:hover {
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .skills-content {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 .skills-column h3 {
   font-size: 1.25rem;
@@ -1098,12 +1165,6 @@ button:hover {
   gap: 0.5rem;
 }
 
-@media (min-width: 768px) {
-  .about-cards {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .card {
   background: white;
   padding: 2rem;
@@ -1137,17 +1198,11 @@ button:hover {
 /* Wrapper with float animation */
 .float-wrapper {
   position: relative;
-  width: 16rem;
-  height: 16rem;
+  width: 18rem;
+  height: 18rem;
   animation: float 3s ease-in-out infinite;
 }
 
-@media (min-width: 768px) {
-  .float-wrapper {
-    width: 20rem;
-    height: 20rem;
-  }
-}
 
 /* Pulsing background */
 .pulse-bg {
@@ -1181,6 +1236,24 @@ button:hover {
     width: 12rem;
     height: 12rem;
   }
+  .user-icon {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .float-wrapper {
+    width: 20rem;
+    height: 20rem;
+  }
+  .about-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .about-content {
+    flex-direction: row;
+  }
+  .skills-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* User icon centered */
@@ -1198,12 +1271,8 @@ button:hover {
   color: white;
 }
 
-@media (min-width: 768px) {
-  .user-icon {
-    width: 10rem;
-    height: 10rem;
-  }
-}
+
+
 
 /* Float animation */
 @keyframes float {
